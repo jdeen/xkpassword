@@ -5,7 +5,7 @@ require 'xkpassword/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "xkpassword"
-  spec.version       = Xkpassword::VERSION
+  spec.version       = XKPassword::VERSION
   spec.authors       = ["Ziyan Junaideen"]
   spec.email         = ["ziyan@jdeen.com"]
 

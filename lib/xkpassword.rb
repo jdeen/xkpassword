@@ -1,5 +1,9 @@
 require "xkpassword/version"
 
-module Xkpassword
-  # Your code goes here...
+class XKPassword
+  def self.generate
+
+  end
 end
+
+
