@@ -1,3 +1,3 @@
 module Xkpassword
-  VERSION = "0.1.0"
+  VERSION = `git describe --tags`.gsub(/-.+$\n/, '')
 end
