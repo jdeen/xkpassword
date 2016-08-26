@@ -11,9 +11,15 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Hard to crack - XKPassword Generator for Ruby}
   spec.description   = """
-    Have you been interested in XKCD Password Generator as seen on http://xkpasswd.net? I was, looked
-    arround but found no lib that did the job. So this is my take on the probelm. Hopefully useful to
-    you guys. Comments and suggestions are appreciated.
+  Passwords are hard to remember, specially when they are hard to crack. I'd spend countless hours
+  every eyar resetting passwords and eventually running out of options that I can remember. I found
+  an interesting concept among a comic XKCD, it is to generate passwords using words and thus easier
+  to remember. Here is XKPassword, a lib which you can install to our Ruby app or run indipendant
+  in the command line.
+
+  Wish you a safer future.
+
+  Ziyan
   """
   spec.homepage      = "https://github.com/jdeen/xkpassword"
   spec.license       = "MIT"
