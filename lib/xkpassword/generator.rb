@@ -23,10 +23,18 @@ class XKPassword::Generator
   #
   # generator = XKPassword::Generator.new
   # generator.generate(options)
-  def generate(options)
+  def generate(options = nil)
+    options ||= {}
     options = DEFAULTS.merge(options)
     length_vals = (options[:min_length]..options[:max_length]).to_a
-    data = options[:words].times.map{ words.with_length(length_vals.sample) }
+
+    data = options[:words].times.map do
+      word = words.random(length_vals.sample)
+      upcase = [true, false].sample
+      word = word.upcase if upcase
+      word
+    end
+    
     data.join(options[:separator])
   end
   
