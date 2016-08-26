@@ -22,7 +22,52 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can use this app stand-alone in the command line or include it in any of your Ruby
+applications.
+
+### Comamnd Line
+The commandline application accepts the same collection of configuration options as would
+the `XKPassword` module would. For more information use `xkpassword --help` to obtain a
+full list of options.
+
+```bash
+~# xkpassword
+~# xkpassword --help
+```
+
+### Ruby Apps
+
+```ruby
+require 'xkpassword/generator'
+
+options = {
+  max_length: 8,
+  min_length: 4,
+  separator: '-',
+  words: 4,
+}
+
+XKPassword.generate(options)
+```
+
+If you are generating multiple passwords at once, I recommend you use
+the following as then it will only load and parse the databse once.
+
+```ruby
+require 'xkpassword/generator'
+
+options = {
+  max_length: 8,
+  min_length: 4,
+  separator: '-',
+  words: 4,
+}
+  
+generator = XKPassword::Generator.new
+generator.generate(options)
+
+# 10.times { generator.generate(options) }
+```
 
 ## Development
 
