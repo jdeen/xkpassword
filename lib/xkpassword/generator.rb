@@ -1,5 +1,9 @@
 require 'xkpassword/words'
 
+# The Generator class which finds words based on the requirement and using the provided options to build a
+# new random passowrd.
+# 
+# @attr_reader [XKPassword::Words] words  A word database that gen provide you words for the length required
 class XKPassword::Generator
   DEFAULTS = {
     max_length: 8,
@@ -14,15 +18,26 @@ class XKPassword::Generator
     @words = XKPassword::Words.new
   end
 
-  # options = {
-  #   separator: ' ',
-  #   words: 4,
-  #   min_length: 4,
-  #   max_length: 8
-  # }
+  # Generates a password absed on the configuration provided.
   #
-  # generator = XKPassword::Generator.new
-  # generator.generate(options)
+  # @param [Hash] options The options to populate a generator
+  # @option options [Integer] :words      The number of words to include in the generated password
+  # @option options [String]  :separator  The separator symbol to use joining words used in password
+  # @option options [Integer] :min_length The minimum length of a word to be used in the process
+  # @option options [Integer] :max_length The maximum length of a word to be used in the process
+  #
+  # @return [String]                      The generated password
+  #
+  # @example Populating the method with all options (current default)
+  #   options = {
+  #     separator: ' ',
+  #     words: 4,
+  #     min_length: 4,
+  #     max_length: 8
+  #   }
+  #
+  #   generator = XKPassword::Generator.new
+  #   generator.generate(options)
   def generate(options = nil)
     options ||= {}
     options = DEFAULTS.merge(options)
