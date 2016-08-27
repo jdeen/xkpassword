@@ -92,6 +92,16 @@ generator.generate(options)
 # 10.times { generator.generate(options) }
 ```
 
+## The GEM
+
+I run a policy of tagging any improvement done for the code base. For example, I just
+bumped a minor (resulting 0.2.3 ~> 0.3.0) for adding Travis CI which doesn't change any
+functional aspect of the app.
+
+I am thinking of releasing gems only on functional updates (real code changes) that
+happen with new features and bug fixes. So for now, there will be no 0.3.0v available
+in Ruby GEMs and the latest would be 0.2.3.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run 
@@ -106,6 +116,7 @@ the `.gem` file to [rubygems.org](https://rubygems.org).
 
 Some of the things I am interested in doing in the near future.
 
+- More tests, didn't have the time to write it all
 - Local configuration file -> ex: `~/.xkpassword`
 - Check for a better dictionary
 - Ability to provide a dictionary (this should help languages other than English)
