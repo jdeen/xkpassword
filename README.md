@@ -14,6 +14,8 @@ Bjoern Rennhak, the CTO of ClothesNetwork (now Graylon), Skyped me an interestin
 that mentioned about the security of passwords that contain just few words been stronger
 than those strong passwords generated. I didn't believe it, but the math sure does add up.
 
+<img src="https://imgs.xkcd.com/comics/password_strength.png" style="max-height: 300px"/>
+
 Here is a lib that you can use to generate passwords in your Ruby applications or a
 command line utility which you can use to generate passwords standalone.
 
