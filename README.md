@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/jdeen/xkpassword.svg?branch=master)](https://travis-ci.org/jdeen/xkpassword)
+[![Inline docs](http://inch-ci.org/github/jdeen/xkpassword.svg?branch=master)](http://inch-ci.org/github/jdeen/xkpassword)
+
 # XKPassword
 
 A password is a key for a lock. The more secure the lock, the more complicated the key would
