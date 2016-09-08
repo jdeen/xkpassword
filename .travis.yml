@@ -7,3 +7,6 @@ rvm:
   - 2.3.0
 before_install: gem install bundler
 script: bundle exec rspec
+addons:
+	code_climate:
+		repo_token: 1a754006a15f983b39ddc25c65543fab4a956a4ff607a636e135415c5350e4e0
