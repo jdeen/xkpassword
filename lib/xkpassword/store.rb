@@ -11,6 +11,6 @@ class XKPassword::Store
 
   def load_data
     path = "#{ File.dirname(__FILE__) }/data/#{ SOURCE }"
-    @data = IO.readlines(path).map{ |item| item.gsub(/\n/, '') }
+    @data = IO.readlines(path).map{ |item| item.delete("\n") }
   end
 end

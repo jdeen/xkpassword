@@ -43,7 +43,7 @@ class XKPassword::Words
   #
   # @return [Array<Integer>]      A collection of lengths of words available
   def lengths
-    words.keys.map{ |key| gsub(/l/, '').to_i }
+    words.keys.map{ |key| key.delete("l").to_i }
   end
 
   # The lenght of the shortest word
