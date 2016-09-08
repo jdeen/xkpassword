@@ -1,6 +1,7 @@
 [![Gem Version](https://badge.fury.io/rb/xkpassword.svg)](https://badge.fury.io/rb/xkpassword)
 [![Build Status](https://travis-ci.org/jdeen/xkpassword.svg?branch=master)](https://travis-ci.org/jdeen/xkpassword)
 [![Inline docs](http://inch-ci.org/github/jdeen/xkpassword.svg?branch=master)](http://inch-ci.org/github/jdeen/xkpassword)
+[![Code Climate](https://codeclimate.com/github/jdeen/xkpassword/badges/gpa.svg)](https://codeclimate.com/github/jdeen/xkpassword)
 
 # XKPassword
 
