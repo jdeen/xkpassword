@@ -11,7 +11,7 @@ while you can still easily access it. But is it the case with most password gene
 generated psswords are hard to remember and most of the time you your self are locked out
 in times of need.
 
-Bjoern Rennhak, the CTO of ClothesNetwork (now Graylon), Skyped me an interesting cartoon,
+Bjoern Rennhak, the CTO of [Orpiva](https://www.orpiva.com), Skyped me an interesting cartoon,
 that mentioned about the security of passwords that contain just few words been stronger
 than those strong passwords generated. I didn't believe it, but the math sure does add up.
 
