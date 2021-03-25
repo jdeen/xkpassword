@@ -12,9 +12,9 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Hard to crack - XKPassword Generator for Ruby}
   spec.description   = """
   Passwords are hard to remember, specially when they are hard to crack. I'd spend countless hours
-  every eyar resetting passwords and eventually running out of options that I can remember. I found
+  every year resetting passwords and eventually running out of options that I can remember. I found
   an interesting concept among a comic XKCD, it is to generate passwords using words and thus easier
-  to remember. Here is XKPassword, a lib which you can install to our Ruby app or run indipendant
+  to remember. Here is XKPassword, a lib which you can install to our Ruby app or run independently
   in the command line.
 
   Wish you a safer future.
