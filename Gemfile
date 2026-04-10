@@ -6,4 +6,5 @@ gemspec
 group :development do
   gem 'yard'
   gem 'pry'
+  gem 'rubocop', require: false
 end

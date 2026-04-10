@@ -1,0 +1,14 @@
+[tools]
+ruby = "3.3"
+
+[tasks.test]
+description = "Run the test suite"
+run = "bundle exec rspec"
+
+[tasks.format]
+description = "Format and lint the code with RuboCop"
+run = "bundle exec rubocop -a"
+
+[tasks.publish]
+description = "Build and publish the gem to RubyGems"
+run = "bundle exec rake release"
