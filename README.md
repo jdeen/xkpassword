@@ -73,6 +73,7 @@ require 'xkpassword'
 options = {
   max_length: 8,
   min_length: 4,
+  case_transform: :capitalize,
   separator: '-',
   words: 4,
 }
@@ -89,6 +90,7 @@ require 'xkpassword/generator'
 options = {
   max_length: 8,
   min_length: 4,
+  case_transform: :capitalize,
   separator: '-',
   words: 4,
 }
@@ -98,6 +100,9 @@ generator.generate(options)
 
 # 10.times { generator.generate(options) }
 ```
+
+`case_transform` supports `:upcase`, `:downcase`, and `:capitalize`, and applies the
+selected transform to every generated word in the password.
 
 ## The GEM
 
@@ -140,4 +145,3 @@ conduct.
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
