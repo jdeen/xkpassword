@@ -12,6 +12,7 @@ module XKPassword
   # @option options [String]  :separator  The separator symbol to use joining words used in password
   # @option options [Integer] :min_length The minimum length of a word to be used in the process
   # @option options [Integer] :max_length The maximum length of a word to be used in the process
+  # @option options [String, Symbol] :case_transform The transform to apply to every generated word
   def self.generate(options = nil)
     generator = XKPassword::Generator.new
     generator.generate(options)
@@ -21,5 +22,4 @@ end
 
 require 'xkpassword/version'
 require 'xkpassword/generator'
-
 
