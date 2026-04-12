@@ -2,16 +2,60 @@ require 'xkpassword/words'
 
 # The Generator class which finds words based on the requirement and using the provided options to build a
 # new random passowrd.
+# Presets provide convenient defaults for common password styles, and callers can override any
+# preset-derived value by passing explicit generation options.
 # 
 # @attr_reader [XKPassword::Words] words  A word database that gen provide you words for the length required
 class XKPassword::Generator
-  DEFAULTS = {
-    case_transform: nil,
-    max_length: 8,
-    min_length: 4,
-    separator: '-',
-    words: 4,
+  # The preset used when `:preset` is omitted.
+  DEFAULT_PRESET = :xkcd
+
+  # Built-in password presets.
+  #
+  # - `:xkcd` generates 4 words between 4 and 8 letters separated by `-`, preserving the gem's
+  #   original default behavior.
+  # - `:web32` generates 4 shorter words between 4 and 5 letters separated by `-`.
+  # - `:wifi` generates 6 words between 4 and 8 letters separated by `-`.
+  # - `:security` generates 6 lowercase words between 4 and 8 letters separated by spaces.
+  # - `:apple_id` generates 3 words between 4 and 7 letters separated by `-`.
+  PRESETS = {
+    xkcd: {
+      case_transform: nil,
+      max_length: 8,
+      min_length: 4,
+      separator: '-',
+      words: 4,
+    },
+    web32: {
+      case_transform: nil,
+      max_length: 5,
+      min_length: 4,
+      separator: '-',
+      words: 4,
+    },
+    wifi: {
+      case_transform: nil,
+      max_length: 8,
+      min_length: 4,
+      separator: '-',
+      words: 6,
+    },
+    security: {
+      case_transform: :downcase,
+      max_length: 8,
+      min_length: 4,
+      separator: ' ',
+      words: 6,
+    },
+    apple_id: {
+      case_transform: nil,
+      max_length: 7,
+      min_length: 4,
+      separator: '-',
+      words: 3,
+    },
   }
+  VALID_CASE_TRANSFORMS = [:upcase, :downcase, :capitalize]
 
   attr_reader :words
 
@@ -20,8 +64,14 @@ class XKPassword::Generator
   end
 
   # Generates a password absed on the configuration provided.
+  # A preset supplies a base configuration and any explicit options passed in `options` override
+  # those preset defaults.
   #
   # @param [Hash] options The options to populate a generator
+  # @option options [String, Symbol] :preset The preset to use. Supports `:xkcd`, `:web32`,
+  #                                          `:wifi`, `:security`, and `:apple_id`.
+  #                                          String values like `"apple_id"` and `"apple-id"`
+  #                                          are normalized to `:apple_id`. Defaults to `:xkcd`.
   # @option options [Integer] :words      The number of words to include in the generated password
   # @option options [String]  :separator  The separator symbol to use joining words used in password
   # @option options [Integer] :min_length The minimum length of a word to be used in the process
@@ -30,20 +80,37 @@ class XKPassword::Generator
   #
   # @return [String]                      The generated password
   #
-  # @example Populating the method with all options (current default)
+  # @example Using the default xkcd preset
+  #   generator = XKPassword::Generator.new
+  #   generator.generate
+  #
+  # @example Using the security preset
+  #   generator = XKPassword::Generator.new
+  #   generator.generate(preset: :security)
+  #
+  # @example Populating the method with a preset and explicit overrides
   #   options = {
+  #     preset: :security,
   #     separator: ' ',
-  #     words: 4,
+  #     words: 6,
   #     min_length: 4,
   #     max_length: 8,
-  #     case_transform: :capitalize
+  #     case_transform: :downcase
   #   }
   #
   #   generator = XKPassword::Generator.new
   #   generator.generate(options)
+  #
+  # @example Built-in preset defaults
+  #   :xkcd     # 4 words, 4..8 letters, "-" separator, random per-word uppercasing
+  #   :web32    # 4 words, 4..5 letters, "-" separator, random per-word uppercasing
+  #   :wifi     # 6 words, 4..8 letters, "-" separator, random per-word uppercasing
+  #   :security # 6 words, 4..8 letters, " " separator, lowercase
+  #   :apple_id # 3 words, 4..7 letters, "-" separator, random per-word uppercasing
   def generate(options = nil)
-    options ||= {}
-    options = DEFAULTS.merge(options)
+    options = (options || {}).dup
+    preset = normalize_preset(options.delete(:preset))
+    options = PRESETS.fetch(preset).merge(options)
     case_transform = normalize_case_transform(options[:case_transform])
     length_vals = (options[:min_length]..options[:max_length]).to_a
 
@@ -73,11 +140,20 @@ class XKPassword::Generator
     return nil if case_transform.nil?
 
     case_transform = case_transform.to_sym if case_transform.is_a?(String)
-    valid_case_transforms = [:upcase, :downcase, :capitalize]
 
-    return case_transform if valid_case_transforms.include?(case_transform)
+    return case_transform if VALID_CASE_TRANSFORMS.include?(case_transform)
 
-    fail ArgumentError, "case_transform should be one of: #{ valid_case_transforms.join(', ') }"
+    fail ArgumentError, "case_transform should be one of: #{ VALID_CASE_TRANSFORMS.join(', ') }"
+  end
+
+  def normalize_preset(preset)
+    return DEFAULT_PRESET if preset.nil?
+
+    preset = preset.strip.downcase.tr(' -', '_').to_sym if preset.is_a?(String)
+
+    return preset if PRESETS.key?(preset)
+
+    fail ArgumentError, "preset should be one of: #{ PRESETS.keys.join(', ') }"
   end
 
 end
