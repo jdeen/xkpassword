@@ -53,7 +53,7 @@ Or install it yourself as:
 ## Usage
 
 You can use this app stand-alone in the command line or include it in any of your Ruby
-applications.
+applications. For a fuller guide to presets and examples, see [doc/README.md](doc/README.md).
 
 ### Comamnd Line
 The commandline application accepts the same collection of configuration options as would
@@ -71,11 +71,7 @@ full list of options.
 require 'xkpassword'
 
 options = {
-  max_length: 8,
-  min_length: 4,
-  case_transform: :capitalize,
-  separator: '-',
-  words: 4,
+  preset: :security,
 }
 
 XKPassword.generate(options)
@@ -88,11 +84,7 @@ the following as then it will only load and parse the databse once.
 require 'xkpassword/generator'
 
 options = {
-  max_length: 8,
-  min_length: 4,
-  case_transform: :capitalize,
-  separator: '-',
-  words: 4,
+  preset: :wifi,
 }
   
 generator = XKPassword::Generator.new
@@ -101,18 +93,18 @@ generator.generate(options)
 # 10.times { generator.generate(options) }
 ```
 
+`preset` supports `:xkcd` (default), `:web32`, `:wifi`, `:security`, and `:apple_id`.
+You can still override any individual option in the selected preset.
+
+The default `:xkcd` preset keeps the gem's original behavior of generating 4 words.
+
 `case_transform` supports `:upcase`, `:downcase`, and `:capitalize`, and applies the
 selected transform to every generated word in the password.
 
 ## The GEM
 
-I run a policy of tagging any improvement done for the code base. For example, I just
-bumped a minor (resulting 0.2.3 ~> 0.3.0) for adding Travis CI which doesn't change any
-functional aspect of the app.
-
-I am thinking of releasing gems only on functional updates (real code changes) that
-happen with new features and bug fixes. So for now, there will be no 0.3.0v available
-in Ruby GEMs and the latest would be 0.2.3.
+Releases are intended for functional updates such as new features and bug fixes.
+Check the Git tags or RubyGems release history for the latest published version.
 
 ## Development
 
