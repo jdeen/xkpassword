@@ -29,7 +29,7 @@ it.
 
 ## Installation
 
-Developed in Linux/Ubuntu, this should work fine in a Linux machine. How ever I can't say
+Developed in Linux/Ubuntu, this should work fine on Linux machines. I cannot say
 the same is true with Mac or Windows systems.
 
 Add this line to your application's Gemfile:
@@ -50,43 +50,90 @@ Or install it yourself as:
 ~# gem install xkpassword
 ```
 
+Installing the gem also installs the `xkpassword` executable.
+
 ## Usage
 
-You can use this app stand-alone in the command line or include it in any of your Ruby
-applications. For a fuller guide to presets and examples, see [doc/README.md](doc/README.md).
+You can use this app as a Ruby gem in your application or as a command line utility.
+For a fuller guide to presets and examples, see [doc/README.md](doc/README.md).
 
-### Comamnd Line
-The commandline application accepts the same collection of configuration options as would
-the `XKPassword` module would. For more information use `xkpassword --help` to obtain a
-full list of options.
+### Command Line
+
+The command line app accepts the same generation options as `XKPassword.generate`.
+If you installed the gem, use the executable directly. If you are working from a
+checkout, run the executable through Bundler.
 
 ```bash
 ~# xkpassword
 ~# xkpassword --help
+~# bundle exec exe/xkpassword
 ```
 
+#### Global CLI config
+
+The CLI reads optional defaults from `~/.xkpassword`. The file uses YAML, so it can
+include comments while you experiment with different settings. Use `xkpassword --init`
+to create a commented starter file.
+
+```bash
+~# xkpassword --init
+~# xkpassword
+~# xkpassword --separator .
+```
+
+```yaml
+# ~/.xkpassword
+# preset: wifi
+words: 5
+min_length: 4
+max_length: 8
+separator: "-"
+# case_transform: capitalize
+```
+
+CLI flags always override values from `~/.xkpassword`, so you can keep preferred defaults
+in the file and still override them per command.
+
 ### Ruby Apps
+
+Use the library API inside your Ruby application:
 
 ```ruby
 require 'xkpassword'
 
 options = {
-  preset: :security,
+  words: 5,
+  min_length: 5,
+  max_length: 8,
+  separator: '.',
+  case_transform: :capitalize,
 }
 
 XKPassword.generate(options)
 ```
 
-If you are generating multiple passwords at once, I recommend you use
-the following as then it will only load and parse the databse once.
+You can still use presets when they fit your use case:
+
+```ruby
+require 'xkpassword'
+
+XKPassword.generate(preset: :security, separator: '.')
+```
+
+If you are generating multiple passwords at once, use a single generator instance so
+the dictionary only needs to be loaded once:
 
 ```ruby
 require 'xkpassword/generator'
 
 options = {
-  preset: :wifi,
+  words: 4,
+  min_length: 4,
+  max_length: 6,
+  separator: '-',
+  case_transform: :downcase,
 }
-  
+
 generator = XKPassword::Generator.new
 generator.generate(options)
 
@@ -115,16 +162,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 a new version, update the version number in `version.rb`, and then run `bundle exec rake
 release`, which will create a git tag for the version, push git commits and tags, and push
 the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## TODO
-
-Some of the things I am interested in doing in the near future.
-
-- More tests, didn't have the time to write it all
-- Local configuration file -> ex: `~/.xkpassword`
-- Check for a better dictionary
-- Ability to provide a dictionary (this should help languages other than English)
-- A black-list - words that will not show up in the generation
 
 ## Contributing
 
