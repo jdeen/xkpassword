@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'xkpassword/words'
 
 describe XKPassword::Words do
-  let(:words) { XKPassword::Words.new() }
+  let(:words) { XKPassword::Words.new }
 
   context '#with_length' do
     it 'gives an array of words for a given length' do

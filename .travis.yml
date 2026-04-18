@@ -1,13 +1,7 @@
 language: ruby
+cache: bundler
 rvm:
-  - 2.3.8
-  - 2.4.9
-  - 2.5.8
-  - 2.6.6
-  - 2.7.2
-  - 3.0.0
-before_install: gem install bundler
+  - '3.3'
+  - '3.4'
+  - '4.0'
 script: bundle exec rspec
-addons:
-  code_climate:
-    repo_token: 1a754006a15f983b39ddc25c65543fab4a956a4ff607a636e135415c5350e4e0

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'xkpassword/store'
 
 describe XKPassword::Store do

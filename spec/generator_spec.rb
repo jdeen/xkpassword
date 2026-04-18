@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'xkpassword/generator'
 
 describe XKPassword::Generator do
@@ -58,9 +60,9 @@ describe XKPassword::Generator do
       web32: { words: 4, length_range: 4..5, separator: '-', expected_word: 'Alpha' },
       wifi: { words: 6, length_range: 4..8, separator: '-', expected_word: 'Alpha' },
       security: { words: 6, length_range: 4..8, separator: ' ', expected_word: 'alpha' },
-      apple_id: { words: 3, length_range: 4..7, separator: '-', expected_word: 'Alpha' },
+      apple_id: { words: 3, length_range: 4..7, separator: '-', expected_word: 'Alpha' }
     }.each do |preset, config|
-      it "supports the #{ preset } preset" do
+      it "supports the #{preset} preset" do
         allow(generator).to receive(:randomly_upcase) { |word| word }
         expect(generator.words).to receive(:random)
           .with(satisfy { |length| config[:length_range].cover?(length) })
@@ -76,7 +78,7 @@ describe XKPassword::Generator do
     it 'accepts presets as strings and lets explicit options override the preset' do
       allow(generator).to receive(:randomly_upcase) { |word| word }
       expect(generator.words).to receive(:random).with(satisfy { |length| (4..7).cover?(length) }).twice
-        .and_return('alpha', 'bravo')
+                                                 .and_return('alpha', 'bravo')
 
       password = generator.generate(preset: 'apple-id', words: 2, separator: '.', case_transform: :capitalize)
 

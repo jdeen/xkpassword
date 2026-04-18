@@ -1,5 +1,6 @@
-module XKPassword
+# frozen_string_literal: true
 
+module XKPassword
   # Generates a random password by intializing a `XKPassword::Generator` instance.
   # This accepts argumennts identcal to the above class.
   #
@@ -34,7 +35,6 @@ module XKPassword
     generator = XKPassword::Generator.new
     generator.generate(options)
   end
-
 end
 
 require 'xkpassword/version'
