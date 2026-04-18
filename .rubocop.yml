@@ -1,0 +1,7 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'

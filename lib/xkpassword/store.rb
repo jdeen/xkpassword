@@ -1,16 +1,21 @@
-class XKPassword::Store
-  SOURCE = 'google-10000-english-no-swears.txt'
+# frozen_string_literal: true
 
-  attr_reader :data
+module XKPassword
+  # Loads the bundled word list from disk.
+  class Store
+    SOURCE = 'google-10000-english-no-swears.txt'
 
-  def initialize
-    load_data
-  end
+    attr_reader :data
 
-  private
+    def initialize
+      load_data
+    end
 
-  def load_data
-    path = "#{ File.dirname(__FILE__) }/data/#{ SOURCE }"
-    @data = IO.readlines(path).map{ |item| item.delete("\n") }
+    private
+
+    def load_data
+      path = File.expand_path("data/#{SOURCE}", __dir__)
+      @data = File.readlines(path, chomp: true)
+    end
   end
 end

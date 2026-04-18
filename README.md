@@ -1,5 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/xkpassword.svg)](https://badge.fury.io/rb/xkpassword)
-[![Build Status](https://travis-ci.org/jdeen/xkpassword.svg?branch=master)](https://travis-ci.org/jdeen/xkpassword)
+[![Build Status](https://app.travis-ci.com/jdeen/xkpassword.svg?branch=master)](https://app.travis-ci.com/jdeen/xkpassword)
 [![Inline docs](http://inch-ci.org/github/jdeen/xkpassword.svg?branch=master)](http://inch-ci.org/github/jdeen/xkpassword)
 [![Code Climate](https://codeclimate.com/github/jdeen/xkpassword/badges/gpa.svg)](https://codeclimate.com/github/jdeen/xkpassword)
 
@@ -37,6 +37,8 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'xkpassword'
 ```
+
+Supported Ruby versions: 3.3, 3.4, and 4.0.
 
 And then execute:
 
