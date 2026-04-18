@@ -1,5 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/xkpassword.svg)](https://badge.fury.io/rb/xkpassword)
-[![Build Status](https://travis-ci.org/jdeen/xkpassword.svg?branch=master)](https://travis-ci.org/jdeen/xkpassword)
+[![Build Status](https://app.travis-ci.com/jdeen/xkpassword.svg?branch=master)](https://app.travis-ci.com/jdeen/xkpassword)
 [![Inline docs](http://inch-ci.org/github/jdeen/xkpassword.svg?branch=master)](http://inch-ci.org/github/jdeen/xkpassword)
 [![Code Climate](https://codeclimate.com/github/jdeen/xkpassword/badges/gpa.svg)](https://codeclimate.com/github/jdeen/xkpassword)
 
@@ -29,8 +29,8 @@ it.
 
 ## Installation
 
-Developed in Linux/Ubuntu, this should work fine on Linux machines. I cannot say
-the same is true with Mac or Windows systems.
+The gem currently supports the Ruby release series that Ruby core still maintains:
+Ruby 3.3, Ruby 3.4, and Ruby 4.0.
 
 Add this line to your application's Gemfile:
 
@@ -155,7 +155,7 @@ Check the Git tags or RubyGems release history for the latest published version.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run 
+After checking out the repo, run `bin/setup` to install dependencies. You can also run
 `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release

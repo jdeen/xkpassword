@@ -1,0 +1,21 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.3
+
+Gemspec/AddRuntimeDependency:
+  Enabled: false
+
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 21
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'xkpassword.gemspec'
+
+Style/Documentation:
+  Enabled: false

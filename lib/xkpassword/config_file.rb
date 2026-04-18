@@ -5,7 +5,8 @@ require 'psych'
 module XKPassword
   # Loads and initializes the CLI config file stored at ~/.xkpassword.
   class ConfigFile
-    Error = Class.new(StandardError)
+    class Error < StandardError
+    end
 
     ALLOWED_OPTIONS = %i[
       preset
